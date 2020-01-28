@@ -1,0 +1,35 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alterar senha</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="{% static '/css/login.css' %}" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+
+      <!-- Logo -->
+      <div class="fadeIn first">
+        <img src="{% static '/img/DN.png' %}" id="icon" alt="User Icon" />
+      </div>
+
+      {{form.non_field_errors}}
+      <!-- Form de Login -->
+      <form method="post">
+        {% csrf_token %}
+        
+        <input type="password" name="old_password" autofocus="" required="" id="id_old_password" class="fadeIn second" name="login" placeholder="senha antiga">
+        <input type="password" name="new_password1" required="" id="id_new_password1" class="fadeIn third" name="login" placeholder="nova senha">
+        <input type="password" name="new_password2" required="" id="id_new_password2" class="fadeIn fourth" name="login" placeholder="confirmar senha">
+        <input type="submit" class="fadeIn fourth" value="Alterar">
+      </form>
+    </div>
+  </div>
+</body>
+</html>

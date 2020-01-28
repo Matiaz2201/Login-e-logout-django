@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-br" dir="ltr">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>NW Desenvolvimento | {% block title %}{% endblock %}</title>
+
+    <!--CSS FontAwesome para icones-->
+    <link rel="stylesheet" href="{% static 'plugins/fontawesome/css/all.css' %}">
+    <!-- CSS Bootstrap  -->
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min-4.1.3.css' %}">
+    <!-- CSS Customizavel -->
+    <link rel="stylesheet" href="{% static '/css/base.css' %}">
+
+    <!-- JQuery e JS-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img style="background: white"src="/media/users/{{user.get_full_name}}.jpg" class="rounded-circle" alt="Cinque Terre" onerror="this.src='/static/img/logo.png'">
+                <strong>NW</strong>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="/home/">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                </li>
+                <li>
+                    <a href="#/">
+                        <i class="fas fa-chart-pie"></i> Dashboard
+                    </a>
+                </li>
+
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Menu</span>
+                    </button>
+
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item dropdown">
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/alterar_senha/">Alterar Senha</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/logout">Sair</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ user.get_full_name }}</a>
+                    </div>
+                </div>
+            </nav>
+            <section>
+              {% block body %}
+                  <div class="container-fluid">
+                  {% block content %}
+                      <div class="row">
+                          <div class="col text-center">Contéudo Principal</div>
+                      </div>
+                  {% endblock %}
+                  </div>
+              {% endblock %}
+            </section>
+        </div>
+
+    </div>
+    {% block scripts %}
+    <script></script>
+    {% endblock %}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#sidebarCollapse').on('click', function() {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+</body>
+</html>
