@@ -1,52 +1,47 @@
-    <!DOCTYPE html>
-    {% load static %}
-    <html lang="pt-br" dir="ltr">
-      <head>
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <link href="{% static '/css/login.css' %}" rel="stylesheet">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{% load static %}
+<!DOCTYPE html> 
+<html lang="pt-br" dir="ltr">
 
-        <meta charset="utf-8">
-        <title>Login</title>
-      </head>
-      <body>
-        <div class="wrapper fadeInDown">
-          <div id="formContent">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="{% static '/css/login.css' %}" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
             <!-- Tabs Titles -->
 
             <!-- Logo -->
             <div class="fadeIn first">
-              <img src="{% static '/img/logo.png' %}" id="icon" alt="User Icon" />
-              {% if messages %}
-              <ul class="messages">
-                  {% for message in messages %}
-                  <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                  {% endfor %}
-              </ul>
-              {% endif %}
+                <img src="{% static '/img/logo.png' %}" id="icon" alt="User Icon" />
             </div>
 
             <!-- Form de Login -->
-            <form action="{% url 'login:login' %}" method="post">
-              {% csrf_token %}
-              <input type="text" name="username" autofocus=""  required="" id="id_username" class="fadeIn second" name="login" placeholder="login">
-              <input type="password" name="password" required="" id="id_password" class="fadeIn third" name="login" placeholder="password">
-              <input type="submit" class="fadeIn fourth" value="Log In">
-              {% if request.GET.next %}
-                <input type="hidden" name="next" value="{{request.GET.next}}">
-              {% endif %}
+            <form action="." method="post">
+                {% csrf_token %}
+                <input type="text" name="username" autofocus="" required="" id="id_username" class="fadeIn second" name="login" placeholder="login">
+                <input type="password" name="password" required="" id="id_password" class="fadeIn third" name="login" placeholder="password">
+                <input type="submit" class="fadeIn fourth" value="Log In"> {% if request.GET.next %}
+                <input type="hidden" name="next" value="{{request.GET.next}}"> {% endif %}
             </form>
 
             <!-- Esqueceu a sua senha -->
-              <div id="formFooter">
+            <div id="formFooter">
                 <a class="underlineHover" href="#">Forgot Password?</a>
-              </div>
-            </center>
-          </div>
+            </div>
         </div>
-        <div class="footer">
-          <center>Todos direitos reservados - ©NW Dev Corp - Desenvolvimento 2020</center>
-        </div>
-      </body>
-    </html>
+    </div>
+    <div class="footer">
+      <center>Todos direitos reservados - ©Abner Matias - NW Desenvolvimento 2020</center>
+    </div>
+</body>
+
+</html>

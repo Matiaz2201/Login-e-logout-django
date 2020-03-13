@@ -7,7 +7,7 @@ from . import views
 app_name = 'login'
 
 urlpatterns = [
-    #path('account/', include('django.contrib.auth.urls')),
+    path('alterar_senha/', views.alterar_senha),
     path('home/', views.home, name='home'),
     path('login/', views.do_login, name='login'),
     path('logout/', views.do_logout, name='logout'),
